@@ -1,0 +1,40 @@
+---
+title: "Regression with interaction"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(caret)
+```
+
+```{r}
+# Load the data
+data("marketing", package = "datarium")
+# Inspect the data
+sample_n(marketing, 3)
+```
+
+```{r}
+# Split the data into training and test set
+set.seed(123)
+training.samples <- marketing$sales %>%
+  createDataPartition(p = 0.8, list = FALSE)
+train.data  <- marketing[training.samples, ]
+test.data <- marketing[-training.samples, ]
+```
+
+```{r}
+# Make predictions
+predictions <- model1 %>% predict(test.data)
+# Model performance
+# (a) Prediction error, RMSE
+RMSE(predictions, test.data$sales)
+```
+
+```{r}
+
+```
+
+
+
